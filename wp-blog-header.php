@@ -1,12 +1,18 @@
-<html><body><pre><?PHP
+<?php
+/**
+ * Loads the WordPress environment and template.
+ *
+ * @package WordPress
+ */
 
-echo "Hello world\nPage generated at: " . date(DATE_RFC2822);
+if ( !isset($wp_did_header) ) {
 
-function is_404 () {
-	return false;
+	$wp_did_header = true;
+
+	require_once( dirname(__FILE__) . '/wp-load.php' );
+
+	wp();
+
+	require_once( ABSPATH . WPINC . '/template-loader.php' );
+
 }
-function is_search () {
-	return false;
-}
-
-?></pre></body></html>
